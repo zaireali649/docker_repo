@@ -1,0 +1,39 @@
+version: "3.6"
+
+
+
+volumes:
+
+  opt-splunk01-etc:
+
+  opt-splunk01-var:
+
+  opt-splunk02-etc:
+
+  opt-splunk02-var:
+
+services:
+
+  splunk01:
+
+    image: ${SPLUNK_IMAGE:-splunk/splunk:latest}
+
+    container_name: splunk01
+
+    environment:
+
+      - SPLUNK_START_ARGS=--accept-license
+
+      - SPLUNK_LICENSE_URI=Free
+
+      - SPLUNK_PASSWORD=witcherluit1
+
+    volumes:
+
+      - opt-splunk01-etc:/opt/splunk/etc
+
+      - opt-splunk01-var:/opt/splunk/var
+
+    ports:
+
+      - 8001:8000
